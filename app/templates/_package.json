@@ -16,8 +16,11 @@
   "electronVersion": "0.33.3",
   "scripts": {
     "test": "xo",
-    "start": "electron .",
-    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion"
+    "build": "export NODE_ENV='production'; electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion",
+    <% if (includeExtras) { %>"build-sass": "node-sass --include-path src/styles --source-map index.map src/styles/index.scss index.css",<% } %>
+    <% if (includeExtras) { %>"watch-sass": "nodemon -e scss -x \"npm run build-sass\"",<% } %>
+    <% if (includeExtras) { %>"start": "export NODE_ENV='dev'; electron . & webpack --watch --progress --colors --output-source-map-file & npm run watch-sass"<% } %>
+    <% if (!includeExtras) { %>"start": "electron ."<% } %>
   },
   "files": [
     "index.js",
@@ -28,9 +31,19 @@
     "electron-app"
   ],
   "dependencies": {
+  	<% if (includeExtras) { %>"node-sass": "^3.3.3",<% } %>
     "electron-debug": "^0.2.1"
   },
   "devDependencies": {
+  	<% if (includeExtras) { %>"babel-core": "^5.8.25",<% } %>
+  	<% if (includeExtras) { %>"babel-loader": "^5.3.2",<% } %>
+  	<% if (includeExtras) { %>"browser-sync": "^2.9.6",<% } %>
+  	<% if (includeExtras) { %>"browser-sync-webpack-plugin": "^1.0.0",<% } %>
+  	<% if (includeExtras) { %>"nodemon": "^1.7.0",<% } %>
+  	<% if (includeExtras) { %>"css-loader": "^0.19.0",<% } %>
+  	<% if (includeExtras) { %>"sass-loader": "^2.0.1",<% } %>
+  	<% if (includeExtras) { %>"style-loader": "^0.12.4",<% } %>
+  	<% if (includeExtras) { %>"webpack": "^1.12.2",<% } %>
     "electron-packager": "^5.0.0",
     "electron-prebuilt": "^0.33.3",
     "xo": "^0.9.0"

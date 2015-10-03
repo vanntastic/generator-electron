@@ -36,6 +36,12 @@ module.exports = yeoman.generators.Base.extend({
 	            filter: function(val) {
 	                return normalizeUrl(val);
 	            }
+	        },
+	        {
+	        	name: 'includeExtras',
+	        	message: 'Would you like to use sass, babel, webpack, and browsersync (y/N)?',
+	        	type: 'confirm',
+	        	default: false
 	        }
         ], function(props) {
             var tpl = {
@@ -46,6 +52,7 @@ module.exports = yeoman.generators.Base.extend({
                 email: this.user.git.email(),
                 website: props.website,
                 humanizedWebsite: humanizeUrl(props.website),
+                includeExtras: props.includeExtras,
                 superb: superb()
             };
 
