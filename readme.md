@@ -10,16 +10,28 @@
 ## Install
 
 ```
-$ npm install --global generator-electron
+$ npm install --global generator-electron-extra
 ```
 
+## Optional Extras
+
+This version of the electron generator optionally comes with:
+
+- webpack with babel
+- sass
+- nodemon
+- browsersync
+
+Streamline your workflow by saying yes to extras!
+
+![](screenshot-extra.png)
 
 ## Usage
 
 With [yo](https://github.com/yeoman/yo):
 
 ```
-$ yo electron
+$ yo electron-extra
 ```
 
 
