@@ -6,8 +6,8 @@
   "repository": "vanntastic/generator-electron",
   "author": {
     "name": "Sindre Sorhus / Vann Ek",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
+    "email": "ek.vann@gmail.com",
+    "url": "innerfusion.net"
   },
   "engines": {
     "node": ">=0.10.0"
