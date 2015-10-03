@@ -4,6 +4,7 @@ var normalizeUrl = require('normalize-url');
 var humanizeUrl = require('humanize-url');
 var yeoman = require('yeoman-generator');
 var _s = require('underscore.string');
+var mkdirp = require('mkdirp');
 
 module.exports = yeoman.generators.Base.extend({
     init: function() {
@@ -65,6 +66,13 @@ module.exports = yeoman.generators.Base.extend({
             mv('gitattributes', '.gitattributes');
             mv('gitignore', '.gitignore');
             mv('_package.json', 'package.json');
+            if (props.includeExtras) {
+            	var newPaths = this.destinationPath() + "/src/styles";
+            	mkdirp.sync(newPaths);
+            	mv('_webpack.config.js', 'webpack.config.js');
+            	mv("main.js", this.destinationPath() + "/src/main.js");
+            	mv("index.scss", this.destinationPath() + "/src/styles/index.scss");
+            };
 
             cb();
         }.bind(this));

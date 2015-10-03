@@ -7,6 +7,10 @@ require('crash-reporter').start();
 
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
+var indexFile = `${__dirname}/index.html`;
+if (process.env['NODE_ENV'] == 'dev') {
+	indexFile = "http://localhost:9999";
+}
 
 // prevent window being garbage collected
 let mainWindow;
@@ -23,7 +27,14 @@ function createMainWindow() {
 		height: 400
 	});
 
-	win.loadUrl(`file://${__dirname}/index.html`);
+	if (process.env['NODE_ENV'] == 'dev') {
+		// we need to wait until browsersync is ready
+		setTimeout(function() {
+			win.loadUrl(indexFile);
+		}, 5000);
+	} else {
+		win.loadUrl(`file:${indexFile}`);
+	}
 	win.on('closed', onClosed);
 
 	return win;
