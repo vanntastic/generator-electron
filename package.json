@@ -1,6 +1,6 @@
 {
   "name": "generator-electron-extra",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "Scaffold out an Electron app boilerplate with sass, webpack, and browsersync",
   "license": "MIT",
   "repository": "vanntastic/generator-electron",
