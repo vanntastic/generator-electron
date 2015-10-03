@@ -1,11 +1,11 @@
 {
-  "name": "generator-electron",
+  "name": "generator-electron-extra",
   "version": "1.10.0",
-  "description": "Scaffold out an Electron app boilerplate",
+  "description": "Scaffold out an Electron app boilerplate with sass, webpack, and browsersync",
   "license": "MIT",
-  "repository": "sindresorhus/generator-electron",
+  "repository": "vanntastic/generator-electron",
   "author": {
-    "name": "Sindre Sorhus",
+    "name": "Sindre Sorhus / Vann Ek",
     "email": "sindresorhus@gmail.com",
     "url": "sindresorhus.com"
   },
